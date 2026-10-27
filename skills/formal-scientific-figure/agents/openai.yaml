@@ -1,0 +1,4 @@
+interface:
+  display_name: "正式科研绘图"
+  short_description: "为 Markdown 总结、PPT 和论文制作正式科研图并维护项目统一视觉配置"
+  default_prompt: "使用 $formal-scientific-figure 将结果整理成正式科研图，沿用项目 TOML 配置并按报告或 PPT 的阅读尺寸检查。"

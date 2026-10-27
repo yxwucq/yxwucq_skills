@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研探索绘图"
+  short_description: "快速检查科研数据、比较趋势并沿用项目 TOML 中的配色与基础样式"
+  default_prompt: "使用 $exploratory-scientific-plot 快速检查数据并绘图，查找或创建项目的绘图 TOML 配置。"
