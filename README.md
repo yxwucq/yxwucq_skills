@@ -6,18 +6,21 @@
 
 | Skill | 用途 |
 |---|---|
+| [create-fixed-analysis](skills/create-fixed-analysis/SKILL.md) | 创建、验证和冻结可复用的生信分析流程，区分默认惯例与研究者科学决策 |
 | [exploratory-scientific-plot](skills/exploratory-scientific-plot/SKILL.md) | 快速查看科研数据，生成轻量探索图，维护项目绘图 TOML |
 | [formal-scientific-figure](skills/formal-scientific-figure/SKILL.md) | 制作用于 Markdown、PPT 或论文的正式科研图，提供完整 Figure legend |
 
-两个技能参考 KOLF2.1J Perturbation Cell Atlas 的视觉风格：白底、清晰的数据结构、稳定配色与必要的直接标注。正式图的完整说明保存在随图 Markdown 中，长方法说明放在图外。
+两个绘图技能参考 KOLF2.1J Perturbation Cell Atlas 的视觉风格：白底、清晰的数据结构、稳定配色与必要的直接标注。正式图的完整说明保存在随图 Markdown 中，长方法说明放在图外。
 
 首次在新项目绘图时创建 `plot_style.toml`；已有项目先查找并沿用正在使用的绘图配置，保留已登记的组别颜色。修改样式时更新生效的 TOML 并重绘。探索版与正式版共用颜色语义，按用途切换尺寸、字号与导出配置。
+
+`create-fixed-analysis` 将研究问题整理为明确的数值与生物学定义，经过小规模验证后再冻结复用。通用惯例自主采用并记录，未决科学取舍提交研究者；关键定义与验证未完成时不进入全量。探索图与正式图分别使用本仓库的两套绘图技能，共用项目配置。
 
 ## 在另一台设备安装
 
 在 Codex 中直接发送：
 
-> 使用 skill-installer，从 https://github.com/yxwucq/yxwucq_skills 安装 skills/exploratory-scientific-plot 和 skills/formal-scientific-figure。
+> 使用 skill-installer，从 https://github.com/yxwucq/yxwucq_skills 安装 skills/create-fixed-analysis、skills/exploratory-scientific-plot 和 skills/formal-scientific-figure。
 
 也可以克隆本仓库后运行本地安装脚本（Python 3.9+，仅使用标准库）：
 
@@ -32,6 +35,7 @@ python3 scripts/install_skills.py
 安装后在下一条 Codex 消息中调用：
 
 ```text
+使用 $create-fixed-analysis，为我的生物学问题创建经过小规模验证、可冻结复用的分析流程。
 使用 $exploratory-scientific-plot，先画一版探索图。
 使用 $formal-scientific-figure，把结果整理成用于报告的正式图，并附完整 Figure legend。
 ```
@@ -59,4 +63,4 @@ python3 scripts/install_skills.py --replace
 
 ## 参考素材
 
-出处、固定代码版本与素材索引见各技能的 `references/sources.md`。论文 Fig. 1/2 保留来源链接，未打包出版原图；notebook 输出参考图随技能保留，并附上原代码仓库的 MIT 许可证。第三方许可仅适用于其对应素材。
+出处、固定代码版本与素材索引见两套绘图技能的 `references/sources.md`。论文 Fig. 1/2 保留来源链接，未打包出版原图；notebook 输出参考图随技能保留，并附上原代码仓库的 MIT 许可证。第三方许可仅适用于其对应素材。

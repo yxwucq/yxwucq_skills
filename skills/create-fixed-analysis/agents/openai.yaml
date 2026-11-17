@@ -1,0 +1,4 @@
+interface:
+  display_name: "创造固定分析流程"
+  short_description: "将生物学问题转化为可审阅、经小规模验证并可冻结复用的分析流程"
+  default_prompt: "使用 $create-fixed-analysis 为我的生物学问题创建可复用的固定分析流程：自行采用适用的通用惯例，清楚提交需要我决定的科学定义，经小规模验证后再冻结。"
