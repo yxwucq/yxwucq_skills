@@ -2,15 +2,15 @@
 # 这是建议初值。已有项目的配色与明确规范优先。
 # 解析顺序：base → profiles.<用途> → figures.<图ID>.style。
 schema_version = 1
-style_name = "kolf-inspired"
+style_name = "J++"  # 正式图默认值，探索图从 explore profile 读取 G。
 
 [base]
 font_family = "Arial"
 font_fallbacks = ["Helvetica", "Liberation Sans", "DejaVu Sans"]
 cjk_font_candidates = ["Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei"]
 background = "#FFFFFF"
-foreground = "#333333"
-panel_background = "#F8F8F8"
+foreground = "#292E32"
+panel_background = "#FFFFFF"
 grid = false
 spines_top = false
 spines_right = false
@@ -21,24 +21,37 @@ marker_alpha = 0.7
 marker_edge_color = "#FFFFFF"
 marker_edge_width_pt = 0.3
 legend_frame = false
-categorical_palette = "bold"
-sequential_colormap = "GnBu"
+categorical_palette = "j_plus_plus"
+sequential_colormap = "j_plus_plus_density"
 diverging_colormap = "RdBu"
 diverging_center = 0.0
 # 色图中心只对有明确零点意义的发散图生效；范围按数据/任务确定。
 
 [semantic_colors]
-reference = "#B0B0B0"
-muted = "#D9D9D9"
-blue = "#367CB7"
-blue_fill = "#EDF6FF"
-highlight = "#E75480"
+primary = "#91A2AD"
+axis = "#AAB1B5"
+tree = "#76858D"
+ridge_fill = "#EDF1F3"
+ridge_tail = "#C4D1D8"
+ridge_line = "#8198A5"
+inactive = "#E1E7E9"
+active = "#72838C"
+reference = "#778089"
+muted = "#E1E7E9"
+blue = "#91A2AD"
+blue_fill = "#EDF1F3"
+highlight = "#0079C8"
 upregulated = "#78C0AF"
 downregulated = "#E7857C"
-threshold = "#5CB39D"
+threshold = "#91A2AD"
 # 先确认语义再使用；不要自动把未确认的对照/方向赋成这些颜色。
 
 [palettes]
+violet_jade = ["#7254A3", "#078476"]
+violet_jade_density = ["#E8E2F0", "#C2AFDA", "#9476B8", "#533575"]
+# 主色、强调色；按比较关系分配。密度色阶依次由低至高。
+j_plus_plus = ["#91A2AD", "#0079C8"]
+j_plus_plus_density = ["#E3EAED", "#C2D0D7", "#9AAEB9", "#637E8C"]
 # Plotly qualitative.Bold；名字表示分类色板，不表示连续值顺序。
 bold = ["#7F3C8D", "#11A579", "#3969AC", "#F2B701", "#E73F74", "#80BA5A", "#E68310", "#008695", "#CF1C90", "#F97B72", "#A5AA99"]
 
@@ -53,10 +66,14 @@ ppt_full_legend = "readable_below_or_caption_page_or_notes"
 [groups]
 # 首次使用时填入真实且稳定的组别键；绘图排序/筛选不得改变映射。
 # 示例（需要确认数据含义后再取消注释）：
-# "condition:control" = "#B0B0B0"
-# "condition:treatment" = "#E75480"
+# "condition:control" = "#778089"
+# "condition:treatment" = "#0079C8"
 
 [profiles.explore]
+style_name = "G"
+foreground = "#302D3A"
+categorical_palette = "violet_jade"
+sequential_colormap = "violet_jade_density"
 width_in = 6.4
 height_in = 4.8
 font_size_pt = 11.0
@@ -72,7 +89,26 @@ formats = ["png"]
 label_budget = 8
 # label_budget 为起始建议，不是隐藏关键标签的硬上限。
 
+[profiles.explore.semantic_colors]
+primary = "#7254A3"
+reference = "#84818C"
+axis = "#B4AFBE"
+tree = "#756D85"
+ridge_fill = "#ECE7F3"
+ridge_tail = "#C4B5DA"
+ridge_line = "#796395"
+inactive = "#E7E3ED"
+active = "#594B72"
+highlight = "#078476"
+muted = "#E7E3ED"
+blue = "#7254A3"
+blue_fill = "#ECE7F3"
+threshold = "#7254A3"
+
 [profiles.formal_md]
+font_family = "Helvetica"
+font_fallbacks = ["Arial", "Liberation Sans", "DejaVu Sans"]
+comparable_xy_layout = "square_shared_scale"
 width_in = 7.2
 height_in = 4.5
 font_size_pt = 10.0
@@ -87,6 +123,9 @@ formats = ["svg", "png"]
 label_budget = 12
 
 [profiles.formal_ppt]
+font_family = "Helvetica"
+font_fallbacks = ["Arial", "Liberation Sans", "DejaVu Sans"]
+comparable_xy_layout = "square_shared_scale"
 width_in = 9.0
 height_in = 5.0
 font_size_pt = 18.0
@@ -105,6 +144,9 @@ label_budget = 8
 # 最终 PPT 中若缩放插入，必须按实际显示大小复查文字。
 
 [profiles.formal_paper]
+font_family = "Helvetica"
+font_fallbacks = ["Arial", "Liberation Sans", "DejaVu Sans"]
+comparable_xy_layout = "square_shared_scale"
 # 只有明确论文/投稿用途才使用；期刊实际要求覆盖这里。
 width_in = 7.1
 height_in = 4.5
@@ -128,7 +170,7 @@ label_budget = 12
 #
 # 仅本图改某组颜色，不更改全项目 groups：
 # [figures.embedding_overview.groups]
-# "condition:treatment" = "#367CB7"
+# "condition:treatment" = "#0079C8"
 #
 # 当前图才需要的显示设置，由绘图代码读取，不当作统计参数：
 # [figures.embedding_overview.display]

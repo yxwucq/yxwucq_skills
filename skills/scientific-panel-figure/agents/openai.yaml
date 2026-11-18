@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研 Panel 绘图"
+  short_description: "围绕一个科研主题规划各面板的内容，确认方案后绘制风格统一的组图"
+  default_prompt: "用 $scientific-panel-figure 帮我围绕一个科研主题规划多面板组图，等我确认各格内容后再绘制。"
